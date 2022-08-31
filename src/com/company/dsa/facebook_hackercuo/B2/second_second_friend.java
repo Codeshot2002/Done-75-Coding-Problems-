@@ -1,8 +1,6 @@
 package com.company.dsa.facebook_hackercuo.B2;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 
 public class second_second_friend {
@@ -144,7 +142,10 @@ public class second_second_friend {
         }
     }
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String location = "F:\\DSA with java course\\facebook hackercuo\\B2";
+        String input_filename = "input";
+        BufferedWriter bw = new BufferedWriter(new FileWriter(location + "\\output.txt"));
+        BufferedReader br = new BufferedReader(new FileReader(location + "\\" + input_filename + ".txt"));
         int t = Integer.parseInt(br.readLine());
         int k = 1;
         while(t-- > 0){
@@ -155,13 +156,15 @@ public class second_second_friend {
             for(int i=0;i<r;i++){
                 String line =  br.readLine();
                 char[] ch = line.toCharArray();
-                for(int j=0;j<c;j++)
+                for(int j=0;j<c-1;j++)
                 {
                     trees[i][j] = String.valueOf(ch[j]);
                 }
             }
-            System.out.println("Case #" + k + ": " +tree(trees,r,c));
+            bw.write("Case #" + k + ": " +tree(trees,r,c) +  "\n");
             k++;
         }
+        bw.close();
+        br.close();
     }
 }
