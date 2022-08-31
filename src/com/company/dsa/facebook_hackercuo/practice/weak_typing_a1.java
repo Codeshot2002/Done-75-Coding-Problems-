@@ -30,7 +30,7 @@ public class weak_typing_a1 {
         String location = "";
         String input_filename = "";
         BufferedWriter bw = new BufferedWriter(new FileWriter(location + "\\output.txt"));
-        BufferedReader br = new BufferedReader(new FileReader(location + "\\" + input_filename));
+        BufferedReader br = new BufferedReader(new FileReader(location + "\\" + input_filename + ".txt"));
         int t = Integer.parseInt(br.readLine());
         int i = 1;
         while(t-- > 0){
