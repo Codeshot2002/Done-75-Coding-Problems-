@@ -30,29 +30,31 @@ public class Main {
         }
         return false;
     }
+    static boolean check(int[] a,int[] b){
+        Queue<Integer> A =new LinkedList<>();
+        Queue<Integer> B = new LinkedList<>();
+        for(int i=0;i<a.length;i++){   //adding array into stacks
+            A.add(a[i]);
+            B.add(b[i]);
+        }
+        for(int i=0;i<a.length;i++){
+            int card = A.remove();
+            A.add(card);
+            if(A.equals(B)) return true;
+        }
+        return false;
+    }
+    static boolean allSame(int[] a){
+        int check = a[0];
+        for(int i=0;i<a.length;i++){
+            if(check!=a[i]){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) throws IOException {
-        /*
-        int[] arr = {1,2,3,3,1};
-        int max =max(arr);
-        int[] freq = new int[max + 1];
-        for(int e : arr){
-            freq[e]++;
-        }
-        System.out.println(Arrays.toString(freq));
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[][] ar = new String[1][4];
-        String line = br.readLine();
-        char[] ch = line.toCharArray();
-        for(int i=0;i<4;i++){
-            ar[0][i] = String.valueOf(ch[i]);
-        }
-        System.out.println(Arrays.deepToString(ar));
-        System.out.println(tree_present(ar,1,4));
-
-
-         */
-        String ar = ".";
-        ar = "^";
-        System.out.println(ar);
+        int[] c = {1,1,1};
+        System.out.println(allSame(c));
     }
 }
