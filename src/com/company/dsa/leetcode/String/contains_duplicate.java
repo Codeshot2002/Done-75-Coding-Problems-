@@ -16,9 +16,23 @@ public class contains_duplicate {
             return false;
         }
     }
+    static int findSum(int A[],int N)
+    {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<N;i++){
+            if(A[i] < min){
+                min = A[i];
+            }if(A[i] > max){
+                max = A[i];
+            }
+        }
 
+        return min + max;
+    }
     public static void main(String[] args) {
-        int[] ar = {1,2,3,5};
-        System.out.println(containsDuplicate(ar));
+        int[] ar = {-1,-2,-3,-4,-5};
+        System.out.println(findSum(ar,5));
+
     }
 }
