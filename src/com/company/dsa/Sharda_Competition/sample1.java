@@ -1,9 +1,8 @@
-package com.company.dsa.take_inputs;
+package com.company.dsa.Sharda_Competition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 /*
 2 -> Test cases
 3 -> size

@@ -1,5 +1,6 @@
 package com.company.dsa;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -65,9 +66,40 @@ public class Main {
         }
         return Integer.parseInt(num);
     }
+    public static int birthdayCakeCandles(List<Integer> candles) {
+        // Write your code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int max = 0;
+        for(int i=0;i<candles.size();i++){
+            int f = candles.get(i);
+            map.put(f, map.getOrDefault(f, 0) + 1);
+            max = Math.max(max,f);
+        }
+        return map.get(max);
+    }
+
     public static void main(String[] args) {
         System.out.println(convert("ABCDEFGH",2));
         System.out.println(myAtoi("words and 987"));
-
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(2);
+        list.add(1);
+        list.add(3);
+        System.out.println(birthdayCakeCandles(list));
+        int num = 54;
+        double a = Math.floor(Math.sqrt(num));
+        double b = Math.ceil(Math.sqrt(num));
+        char[] ch = new char[5];
+        ch[0] = 'a';
+        ch[1] = 'b';
+        ch[3] = 'c';
+        for(int i=0;i<ch.length;i++){
+            if(ch[i] != 0){
+                System.out.print(ch[i] + " ");
+            }else{
+                continue;
+            }
+        }
     }
 }

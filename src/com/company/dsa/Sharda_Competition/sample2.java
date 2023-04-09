@@ -1,4 +1,4 @@
-package com.company.dsa.take_inputs;
+package com.company.dsa.Sharda_Competition;
 
 import java.util.Arrays;
 import java.util.Scanner;
