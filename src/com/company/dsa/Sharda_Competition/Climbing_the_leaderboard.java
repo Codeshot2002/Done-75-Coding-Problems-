@@ -33,7 +33,6 @@ public class Climbing_the_leaderboard {
 
     public static void main(String[] args) {
 
-        System.out.println(climbingLeaderboard(Arrays.asList(rank)), );
     }
 
 }
