@@ -32,7 +32,7 @@ public class Climbing_the_leaderboard {
     }
 
     public static void main(String[] args) {
-        
+
     }
 
 }
