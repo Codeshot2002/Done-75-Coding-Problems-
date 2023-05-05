@@ -46,8 +46,56 @@ public class leetcode_way_of_implementation {
         return dfs;
     }
 
+    static public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int n = rooms.size();
+        boolean[] visited = new boolean[n];
+        visited[0] = true;
+        Stack<Integer> stack = new Stack<>();
+        while(!stack.isEmpty()){
+            int curr = stack.pop();
+            System.out.println(curr);
+            if(curr == n-1) return true;
+            for(int nei : rooms.get(curr)){
+                if(!visited[nei]){
+                    stack.push(nei);
+                    visited[nei] = true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    static void findAllPaths( int src, int dest,List<Integer>[] adj ,List<List<Integer>> ans, List<Integer> temp, boolean[] visited){
+        if(src == dest){
+            List<Integer> t = new ArrayList<>(temp);
+            ans.add(t);
+            return;
+        }
+        visited[src] = true;
+        for(int nei : adj[src]){
+            if(!visited[nei]){
+                temp.add(nei);
+                findAllPaths(nei,dest,adj,ans,temp,visited);
+                temp.remove(temp.size()-1);
+            }
+        }
+        visited[src] = false;
+    }
+    static List<Integer> shortest_path(List<List<Integer>> ans){
+        List<Integer> out = new ArrayList<>();
+        int min = Integer.MAX_VALUE;
+        for(int i=0;i<ans.size();i++){
+            if(ans.get(i).size() < min){
+                out = ans.get(i);
+                min = ans.get(i).size();
+            }
+        }
+        return out;
+    }
+
     public static void main(String[] args) {
-        int[][] graph = {{1,2},{2,3},{3,4},{4,1}};
+        int[][] graph = {{1,2},{1,3},{1,4},{2,3},{2,5},{3,4},{4,5},{5,6}};
         int v = graph.length;
         ArrayList<Integer>[] adj = new ArrayList[v+1];
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
@@ -64,10 +112,20 @@ public class leetcode_way_of_implementation {
         }
         System.out.println("Graph in hashmap");
         System.out.println(map);
-        System.out.println("Graph : " + Arrays.toString(graph));
+        //System.out.println("Graph : " + Arrays.toString(graph));
         System.out.println("dfs");
         System.out.println(dfsTraversal(graph,adj));
         System.out.println("bfs");
         System.out.println(bfsTraversal(graph,adj));
+
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        boolean[] visited = new boolean[7];
+        temp.add(1);
+        System.out.println("All paths");
+        findAllPaths(1,6,adj,ans,temp,visited);
+        System.out.println(ans);
+        System.out.println("Shortest path");
+        System.out.println(shortest_path(ans));
     }
 }
