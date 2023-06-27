@@ -33,15 +33,36 @@ public class subsets {
             int n = outer.size();
             for(int j=0;j<n;j++){
                 List<Integer> internal = new ArrayList<>(outer.get(j));
-                internal.add(num);
+                if(!internal.isEmpty()){
+                    int last = internal.get(internal.size()-1);
+                    if(last == 1){
+                        if(num == 2){
+                            internal.add(num);
+                        }
+                    }else if(last == 2){
+                        if(num != 2){
+                            internal.add(num);
+                        }
+                    }else if(last == 3){
+                        if(num != 2){
+                            internal.add(num);
+                        }
+                    }
+                }else{
+                    internal.add(num);
+                }
                 outer.add(internal);
             }
         }
         return outer;
     }
     public static void main(String[] args) {
-        int[] ar = {1,2,3};
-        System.out.println(subsetI(ar));
-        System.out.println(subset("","abcdef"));
+        int[] ar = {1,1,2,2,2,2,2,3};
+        List<List<Integer>> list = subsetI(ar);
+        int max = -1;
+        for(int i=0;i<list.size();i++){
+            max = Math.max(max,list.get(i).size());
+        }
+        System.out.println(max);
     }
 }
