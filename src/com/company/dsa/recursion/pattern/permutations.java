@@ -15,9 +15,9 @@ public class permutations {
     }
 
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-        permute("","a",list);
-        System.out.println(list);
-        System.out.println("Size : " + list.size());
+        ArrayList<String> res = new ArrayList<>();
+        permute("","aab",res);
+        System.out.println(res);
     }
+
 }
